@@ -1,121 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <img src="logo_1.png" alt="Company Logo" style="height:60px; width:auto;">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Active LED Display Calculator</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Active LED Calculator - PeopleLink</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0; padding: 0;
+  background: #f9f9f9;
+}
+header {
+  background: #004080;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+.logo {
+  height: 50px;
+  display: block;
+  margin: 0 auto 10px auto;
+}
+h1 { margin:0; font-size:24px; }
+main {
+  max-width:600px;
+  margin:20px auto;
+  padding:20px;
+  background:white;
+  border-radius:8px;
+  box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+.form-group { margin-bottom:15px; }
+label { display:block; margin-bottom:5px; font-weight:bold; }
+input, select {
+  width:100%;
+  padding:8px;
+  box-sizing:border-box;
+}
+button {
+  padding:10px 20px;
+  background:#004080;
+  color:white;
+  border:none;
+  border-radius:4px;
+  cursor:pointer;
+}
+button:hover { background:#002850; }
+.results {
+  margin-top:20px;
+  padding:15px;
+  background:#e6f0ff;
+  border-radius:6px;
+}
+</style>
 </head>
-<body class="bg-gray-100 text-gray-800">
-  <div class="max-w-4xl mx-auto mt-10 p-6 bg-white rounded-2xl shadow-xl">
-    <h1 class="text-2xl font-bold text-center mb-6">Active LED Display Calculator</h1>
-    
-    <!-- Input Section -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-      <div>
-        <label class="font-semibold">Pixel Pitch (mm):</label>
-        <input id="pixelPitch" type="number" step="0.01" class="w-full mt-2 p-2 border rounded" placeholder="e.g., 1.25">
-      </div>
-      <div>
-        <label class="font-semibold">Cabinet Size (mm):</label>
-        <div class="flex space-x-2 mt-2">
-          <input id="cabinetWidth" type="number" class="w-1/2 p-2 border rounded" placeholder="Width e.g., 640">
-          <input id="cabinetHeight" type="number" class="w-1/2 p-2 border rounded" placeholder="Height e.g., 480">
-        </div>
-      </div>
-      <div>
-        <label class="font-semibold">Display Size (ft):</label>
-        <div class="flex space-x-2 mt-2">
-          <input id="displayWidth" type="number" class="w-1/2 p-2 border rounded" placeholder="Width e.g., 11">
-          <input id="displayHeight" type="number" class="w-1/2 p-2 border rounded" placeholder="Height e.g., 7">
-        </div>
-      </div>
-      <div>
-        <label class="font-semibold">Power per Cabinet (W):</label>
-        <input id="powerPerCabinet" type="number" class="w-full mt-2 p-2 border rounded" placeholder="e.g., 150">
-      </div>
+<body>
+<header>
+  <img src="images/peoplelink-logo.png" alt="PeopleLink Logo" class="logo">
+  <h1>Active LED Calculator</h1>
+</header>
+
+<main>
+  <div class="calculator">
+    <div class="form-group">
+      <label for="ledType">LED Type:</label>
+      <select id="ledType">
+        <option value="">--Select Type--</option>
+        <option value="COB Indoor">COB Indoor</option>
+        <option value="SMD Indoor">SMD Indoor</option>
+        <option value="SMD Outdoor">SMD Outdoor</option>
+      </select>
     </div>
 
-    <div class="flex justify-center">
-      <button onclick="calculateLED()" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">Calculate</button>
+    <div class="form-group">
+      <label for="pixelPitch">Pixel Pitch (mm):</label>
+      <select id="pixelPitch">
+        <option value="">--Select Pixel Pitch--</option>
+      </select>
     </div>
 
-    <!-- Output Section -->
-    <div id="output" class="mt-8 hidden">
-      <h2 class="text-xl font-bold mb-4 text-center border-b pb-2">Calculation Results</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-        <p><strong>Cabinet Count (W × H):</strong> <span id="cabinetCount"></span></p>
-        <p><strong>Total Cabinets:</strong> <span id="totalCabinets"></span></p>
-        <p><strong>Total Resolution (W × H):</strong> <span id="totalResolution"></span></p>
-        <p><strong>Aspect Ratio:</strong> <span id="aspectRatio"></span></p>
-        <p><strong>Total Power (Max):</strong> <span id="powerMax"></span> W</p>
-        <p><strong>Total Power (Typical 60%):</strong> <span id="powerTypical"></span> W</p>
-        <p><strong>Recommended Controller:</strong> <span id="controller"></span></p>
-      </div>
+    <div class="form-group">
+      <label for="screenWidth">Screen Width (mm):</label>
+      <input type="number" id="screenWidth" placeholder="Enter width">
     </div>
+
+    <div class="form-group">
+      <label for="screenHeight">Screen Height (mm):</label>
+      <input type="number" id="screenHeight" placeholder="Enter height">
+    </div>
+
+    <button id="calculateBtn">Calculate</button>
   </div>
 
-  <script>
-    function calculateLED() {
-      const pixelPitch = parseFloat(document.getElementById("pixelPitch").value);
-      const cabW = parseFloat(document.getElementById("cabinetWidth").value);
-      const cabH = parseFloat(document.getElementById("cabinetHeight").value);
-      const dispWft = parseFloat(document.getElementById("displayWidth").value);
-      const dispHft = parseFloat(document.getElementById("displayHeight").value);
-      const power = parseFloat(document.getElementById("powerPerCabinet").value);
+  <div class="results">
+    <h2>Results</h2>
+    <p id="resolution"></p>
+    <p id="aspectRatio"></p>
+    <p id="viewingDistance"></p>
+    <p id="cabinets"></p>
+    <p id="controllers"></p>
+  </div>
+</main>
 
-      if (!pixelPitch || !cabW || !cabH || !dispWft || !dispHft || !power) {
-        alert("Please fill all fields correctly!");
-        return;
-      }
+<script>
+const ledTypeSelect = document.getElementById('ledType');
+const pixelPitchSelect = document.getElementById('pixelPitch');
+const screenWidthInput = document.getElementById('screenWidth');
+const screenHeightInput = document.getElementById('screenHeight');
+const calculateBtn = document.getElementById('calculateBtn');
 
-      // Convert feet to mm
-      const dispWmm = dispWft * 304.8;
-      const dispHmm = dispHft * 304.8;
+const resolutionOutput = document.getElementById('resolution');
+const aspectRatioOutput = document.getElementById('aspectRatio');
+const viewingDistanceOutput = document.getElementById('viewingDistance');
+const cabinetsOutput = document.getElementById('cabinets');
+const controllersOutput = document.getElementById('controllers');
 
-      // Cabinet count
-      const cabCountW = Math.round(dispWmm / cabW);
-      const cabCountH = Math.round(dispHmm / cabH);
-      const totalCabinets = cabCountW * cabCountH;
+const ledData = {
+  "COB Indoor":[
+    {pitch:0.9, cabinetW:600, cabinetH:337.5},
+    {pitch:1.25, cabinetW:600, cabinetH:337.5},
+    {pitch:1.5, cabinetW:600, cabinetH:337.5}
+  ],
+  "SMD Indoor":[
+    {pitch:1.86, cabinetW:640, cabinetH:480},
+    {pitch:2, cabinetW:640, cabinetH:480},
+    {pitch:2.5, cabinetW:640, cabinetH:480}
+  ],
+  "SMD Outdoor":[
+    {pitch:4, cabinetW:960, cabinetH:960},
+    {pitch:6.67, cabinetW:960, cabinetH:960},
+    {pitch:8, cabinetW:960, cabinetH:960},
+    {pitch:10, cabinetW:960, cabinetH:960}
+  ]
+};
 
-      // Resolution
-      const pixelsPerCabW = Math.round(cabW / pixelPitch);
-      const pixelsPerCabH = Math.round(cabH / pixelPitch);
-      const totalPixelsW = pixelsPerCabW * cabCountW;
-      const totalPixelsH = pixelsPerCabH * cabCountH;
-      const totalPixels = totalPixelsW * totalPixelsH;
+// Populate pixel pitch based on LED type
+ledTypeSelect.addEventListener('change', () => {
+  const type = ledTypeSelect.value;
+  pixelPitchSelect.innerHTML = '<option value="">--Select Pixel Pitch--</option>';
+  if(ledData[type]){
+    ledData[type].forEach(d=>{
+      const option = document.createElement('option');
+      option.value = d.pitch;
+      option.text = d.pitch;
+      pixelPitchSelect.appendChild(option);
+    });
+  }
+});
 
-      // Aspect ratio
-      const aspect = (totalPixelsW / totalPixelsH).toFixed(2);
-      let ratio = aspect >= 1.75 && aspect <= 1.8 ? "16:9" : (aspect >= 1.5 && aspect < 1.75 ? "16:10" : "Custom");
+calculateBtn.addEventListener('click', () => {
+  const type = ledTypeSelect.value;
+  const pitch = parseFloat(pixelPitchSelect.value);
+  const width = parseFloat(screenWidthInput.value);
+  const height = parseFloat(screenHeightInput.value);
 
-      // Power
-      const powerMax = totalCabinets * power;
-      const powerTypical = (powerMax * 0.6).toFixed(0);
+  if(!type || !pitch || !width || !height){
+    alert('Please fill all inputs');
+    return;
+  }
 
-      // Controller suggestion
-      let controller = "";
-      if (totalPixels <= 650000) controller = "TB50";
-      else if (totalPixels <= 1300000) controller = "TB70";
-      else if (totalPixels <= 3900000) controller = "VX600";
-      else if (totalPixels <= 6500000) controller = "VX1000";
-      else if (totalPixels <= 10400000) controller = "VX16s";
-      else controller = "H Series or Multiple Controllers";
+  const data = ledData[type].find(d=>d.pitch===pitch);
+  const cabinetW = data.cabinetW;
+  const cabinetH = data.cabinetH;
 
-      // Show results
-      document.getElementById("output").classList.remove("hidden");
-      document.getElementById("cabinetCount").innerText = `${cabCountW} × ${cabCountH}`;
-      document.getElementById("totalCabinets").innerText = totalCabinets;
-      document.getElementById("totalResolution").innerText = `${totalPixelsW} × ${totalPixelsH}`;
-      document.getElementById("aspectRatio").innerText = ratio;
-      document.getElementById("powerMax").innerText = powerMax;
-      document.getElementById("powerTypical").innerText = powerTypical;
-      document.getElementById("controller").innerText = controller;
-    }
- </script>
-<footer class="text-center text-gray-500 text-sm mt-10">
-    © 2025 PeopleLink Unified Communications Pvt. Ltd. | Designed by Pramodh Kathala
-  </footer>
+  // Calculations
+  const widthPixels = Math.round(width / pitch);
+  const heightPixels = Math.round(height / pitch);
+  const aspect = (width/height).toFixed(2);
+  const viewingDistance = (pitch * 3).toFixed(2); // meters
+  const cabinetsW = Math.ceil(width / cabinetW);
+  const cabinetsH = Math.ceil(height / cabinetH);
+  const totalCabinets = cabinetsW * cabinetsH;
+
+  // Controllers logic
+  let controllers = [];
+  if(widthPixels <= 1920 && heightPixels <= 1200) controllers.push("VX400 Pro");
+  if(widthPixels <= 3840 && heightPixels <= 2160) controllers.push("VX600 Pro","4K Prime","TB40");
+  if(widthPixels <= 7680 && heightPixels <= 4320) controllers.push("VX1000 Pro","H Series","TB60");
+
+  // Display
+  resolutionOutput.textContent = `Resolution: ${widthPixels} × ${heightPixels} pixels`;
+  aspectRatioOutput.textContent = `Aspect Ratio: ${aspect}:1`;
+  viewingDistanceOutput.textContent = `Optimal Viewing Distance: ${viewingDistance} meters`;
+  cabinetsOutput.textContent = `Cabinets Needed: ${totalCabinets} (${cabinetsW} × ${cabinetsH})`;
+  controllersOutput.textContent = `Recommended Controllers: ${controllers.join(", ")}`;
+});
+</script>
 </body>
 </html>
