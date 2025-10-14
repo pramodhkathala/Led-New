@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Active LED Display Calculator</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+  <div class="max-w-4xl mx-auto mt-10 p-6 bg-white rounded-2xl shadow-xl">
+    <h1 class="text-2xl font-bold text-center mb-6">Active LED Display Calculator</h1>
+    
+    <!-- Input Section -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+      <div>
+        <label class="font-semibold">Pixel Pitch (mm):</label>
+        <input id="pixelPitch" type="number" step="0.01" class="w-full mt-2 p-2 border rounded" placeholder="e.g., 1.25">
+      </div>
+      <div>
+        <label class="font-semibold">Cabinet Size (mm):</label>
+        <div class="flex space-x-2 mt-2">
+          <input id="cabinetWidth" type="number" class="w-1/2 p-2 border rounded" placeholder="Width e.g., 640">
+          <input id="cabinetHeight" type="number" class="w-1/2 p-2 border rounded" placeholder="Height e.g., 480">
+        </div>
+      </div>
+      <div>
+        <label class="font-semibold">Display Size (ft):</label>
+        <div class="flex space-x-2 mt-2">
+          <input id="displayWidth" type="number" class="w-1/2 p-2 border rounded" placeholder="Width e.g., 11">
+          <input id="displayHeight" type="number" class="w-1/2 p-2 border rounded" placeholder="Height e.g., 7">
+        </div>
+      </div>
+      <div>
+        <label class="font-semibold">Power per Cabinet (W):</label>
+        <input id="powerPerCabinet" type="number" class="w-full mt-2 p-2 border rounded" placeholder="e.g., 150">
+      </div>
+    </div>
+
+    <div class="flex justify-center">
+      <button onclick="calculateLED()" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">Calculate</button>
+    </div>
+
+    <!-- Output Section -->
+    <div id="output" class="mt-8 hidden">
+      <h2 class="text-xl font-bold mb-4 text-center border-b pb-2">Calculation Results</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+        <p><strong>Cabinet Count (W × H):</strong> <span id="cabinetCount"></span></p>
+        <p><strong>Total Cabinets:</strong> <span id="totalCabinets"></span></p>
+        <p><strong>Total Resolution (W × H):</strong> <span id="totalResolution"></span></p>
+        <p><strong>Aspect Ratio:</strong> <span id="aspectRatio"></span></p>
+        <p><strong>Total Power (Max):</strong> <span id="powerMax"></span> W</p>
+        <p><strong>Total Power (Typical 60%):</strong> <span id="powerTypical"></span> W</p>
+        <p><strong>Recommended Controller:</strong> <span id="controller"></span></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function calculateLED() {
+      const pixelPitch = parseFloat(document.getElementById("pixelPitch").value);
+      const cabW = parseFloat(document.getElementById("cabinetWidth").value);
+      const cabH = parseFloat(document.getElementById("cabinetHeight").value);
+      const dispWft = parseFloat(document.getElementById("displayWidth").value);
+      const dispHft = parseFloat(document.getElementById("displayHeight").value);
+      const power = parseFloat(document.getElementById("powerPerCabinet").value);
+
+      if (!pixelPitch || !cabW || !cabH || !dispWft || !dispHft || !power) {
+        alert("Please fill all fields correctly!");
+        return;
+      }
+
+      // Convert feet to mm
+      const dispWmm = dispWft * 304.8;
+      const dispHmm = dispHft * 304.8;
+
+      // Cabinet count
+      const cabCountW = Math.round(dispWmm / cabW);
+      const cabCountH = Math.round(dispHmm / cabH);
+      const totalCabinets = cabCountW * cabCountH;
+
+      // Resolution
+      const pixelsPerCabW = Math.round(cabW / pixelPitch);
+      const pixelsPerCabH = Math.round(cabH / pixelPitch);
+      const totalPixelsW = pixelsPerCabW * cabCountW;
+      const totalPixelsH = pixelsPerCabH * cabCountH;
+      const totalPixels = totalPixelsW * totalPixelsH;
+
+      // Aspect ratio
+      const aspect = (totalPixelsW / totalPixelsH).toFixed(2);
+      let ratio = aspect >= 1.75 && aspect <= 1.8 ? "16:9" : (aspect >= 1.5 && aspect < 1.75 ? "16:10" : "Custom");
+
+      // Power
+      const powerMax = totalCabinets * power;
+      const powerTypical = (powerMax * 0.6).toFixed(0);
+
+      // Controller suggestion
+      let controller = "";
+      if (totalPixels <= 650000) controller = "TB50";
+      else if (totalPixels <= 1300000) controller = "TB70";
+      else if (totalPixels <= 3900000) controller = "VX600";
+      else if (totalPixels <= 6500000) controller = "VX1000";
+      else if (totalPixels <= 10400000) controller = "VX16s";
+      else controller = "H Series or Multiple Controllers";
+
+      // Show results
+      document.getElementById("output").classList.remove("hidden");
+      document.getElementById("cabinetCount").innerText = `${cabCountW} × ${cabCountH}`;
+      document.getElementById("totalCabinets").innerText = totalCabinets;
+      document.getElementById("totalResolution").innerText = `${totalPixelsW} × ${totalPixelsH}`;
+      document.getElementById("aspectRatio").innerText = ratio;
+      document.getElementById("powerMax").innerText = powerMax;
+      document.getElementById("powerTypical").innerText = powerTypical;
+      document.getElementById("controller").innerText = controller;
+    }
+  </script>
+</body>
+</html>
