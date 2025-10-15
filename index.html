@@ -786,7 +786,7 @@
         const { finalW_M, finalH_M, finalW_FT, finalH_FT } = calculateDimensions(data);
 
         // 1. Update Input Summary Display
-        document.getElementById('enteredSummaryText').textContent = `Cabinet Array: ${data.numCabW}x${data.numCabH} (${data.totalCabinets} Cabinets)`;
+        document.getElementById('enteredSummaryText').textContent = `Cabinet Matrix: ${data.numCabW}x${data.numCabH} (${data.totalCabinets} Cabinets)`;
         document.getElementById('aspectRatioValue').textContent = data.aspectRatioText; 
 
         // 2. Animate and switch containers
@@ -835,8 +835,8 @@
             <span style="grid-column: 1 / -1; font-weight: 700; color: #607D8B; border-bottom: 1px solid #607D8B; padding-bottom: 5px; margin-bottom: 5px; margin-top: 10px;">Connection Summary</span>
             <span id="requiredRecCards"><strong>Total Receiving Cards Required :</strong><small>${data.totalRecCards}</small></span>
             
-            <span id="controllerLongPorts"><strong>Long Ethernet Ports/Runs : (Controller to Wall) -</strong><small>** ${data.requiredPorts}</small></span>
-            <span id="controllerShortPorts"><strong>Short Ethernet Cables : (Between Cabinets) -</strong><small>** ${data.requiredShortEthernet}</small></span>
+            <span id="controllerLongPorts"><strong>Long Ethernet Ports/Runs : (Controller to Wall*) -</strong><small> ${data.requiredPorts}</small></span>
+            <span id="controllerShortPorts"><strong>Short Ethernet Cables : (Between Cabinets*) -</strong><small> ${data.requiredShortEthernet}</small></span>
         `;
         
         // --- 4. Power and Weight Section ---
@@ -964,7 +964,7 @@
             ['Pixel Pitch :', `${data.pixelPitch_mm} mm`],
             ['Cabinet Dimensions (W x H) :', `${data.cabinetW_mm}mm x ${data.cabinetH_mm}mm`],
             ['Cabinet Pixels (W x H) :', `${data.cabPixW} x ${data.cabPixH}`],
-            ['Cabinet Array (W x H) :', `${data.numCabW} x ${data.numCabH}`],
+            ['Cabinet Matrix (W x H) :', `${data.numCabW} x ${data.numCabH}`],
             ['Total Cabinets Required :', `${data.totalCabinets}`],
             ['Total Modules Required :', `${data.totalModules}`],
             ['Brightness Range :', data.nits_range ? `${data.nits_range} cd/m²` : 'N/A'], 
@@ -1144,3 +1144,4 @@
 </footer>
 </body>
 </html>
+
