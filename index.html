@@ -1102,6 +1102,11 @@
         doc.text(`Note on Design Figures: Design Power and Weight include a ${MARGIN_PERCENT_TEXT} safety margin over actual maximum consumption/cabinet weight for structural and electrical planning.`, margin, y, { maxWidth: pageW - 2 * margin });
         y += lineHeight;
 
+       // Add the new copyright and design line in a light color
+        doc.setFontSize(7);
+        doc.setTextColor(...footerColor);
+        doc.text('© 2025 PeopleLink Unified Communications Pvt. Ltd. | Designed by Pramodh Kathala', pageW / 2, doc.internal.pageSize.getHeight() - 10, { align: 'center' });
+
         doc.save(`PeopleLink_LED_Config_${data.finalResW}x${data.finalResH}_BOQ.pdf`);
     }
 
@@ -1125,3 +1130,4 @@
 </footer>
 </body>
 </html>
+
