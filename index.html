@@ -11,8 +11,8 @@
     body { font-family: 'Inter', sans-serif; margin: 0; padding: 40px; background: #eef1f8; color: #1c2738; font-size: 14px; }
     .main-wrapper { max-width: 1200px; margin: auto; }
     
-    /* Header & Titles - DARK GREEN BRANDING */
-    h2 { text-align: center; color: #1B5E20; /* Dark Green */ margin-top: 0; margin-bottom: 30px; font-weight: 700; font-size: 1.8em; }
+    /* Header & Titles */
+    h2 { text-align: center; color: #1B5E20; margin-top: 0; margin-bottom: 30px; font-weight: 700; font-size: 1.8em; }
 
     /* Input/Form Container */
     .input-panel { background: #ffffff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: all 0.6s ease-out; }
@@ -27,26 +27,25 @@
     select, input[type="number"], input[type="text"] { 
         width: 100%; padding: 10px 12px; font-size: 15px; border: 1px solid #dcdcdc; border-radius: 6px; box-sizing: border-box; transition: border-color 0.3s, box-shadow 0.3s; 
     }
-    /* Lighter Focus Effect */
-    select:focus, input[type="number"]:focus, input[type="text"]:focus { border-color: #81D4FA; box-shadow: 0 0 0 2px rgba(129, 212, 248, 0.4); outline: none; }
+    select:focus, input[type="number"]:focus, input[type="text"]:focus { border-color: #1B5E20; box-shadow: 0 0 0 2px rgba(27, 94, 32, 0.2); outline: none; }
     
-    /* Buttons - LIGHTER COLOR */
-    .submit-btn { margin-top: 25px; grid-column: 1 / -1; background-color: #4CAF50; color: white; padding: 14px; border: none; border-radius: 8px; font-size: 16px; width: 100%; cursor: pointer; transition: background-color 0.3s, transform 0.2s; font-weight: 600; }
-    .submit-btn:hover { background-color: #66BB6A; transform: translateY(-1px); }
-    .back-btn { background-color: #BDBDBD; margin-top: 30px; }
-    .back-btn:hover { background-color: #9E9E9E; }
+    /* Buttons */
+    .submit-btn { margin-top: 25px; grid-column: 1 / -1; background-color: #1B5E20; color: white; padding: 14px; border: none; border-radius: 8px; font-size: 16px; width: 100%; cursor: pointer; transition: background-color 0.3s, transform 0.2s; font-weight: 600; }
+    .submit-btn:hover { background-color: #2E7D32; transform: translateY(-1px); }
+    .back-btn { background-color: #6c757d; margin-top: 30px; }
+    .back-btn:hover { background-color: #5a6268; }
     
     /* Error/Summary Display - ENHANCED VISIBILITY */
     .hidden { display: none !important; }
     .error-message { 
-        color: #B71C1C; 
+        color: #880000; 
         font-weight: bold; 
         text-align: center; 
         margin-top: 15px; 
         padding: 15px; 
         min-height: 20px; 
-        background: #ffebee; 
-        border: 2px solid #B71C1C; 
+        background: #FFEDED; 
+        border: 2px solid #880000; 
         border-radius: 8px; 
         transition: all 0.3s ease;
     }
@@ -59,39 +58,18 @@
     
     .output-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 20px; }
     
-    /* Visualization Area - VIDEO EFFECT SIMULATION */
-    @keyframes subtleGlow {
-        0% { filter: brightness(1.0); }
-        50% { filter: brightness(1.05); }
-        100% { filter: brightness(1.0); }
-    }
-
+    /* Visualization Area */
     .vis-box { border: 1px solid #e0e0e0; padding: 20px; border-radius: 8px; background: #f7f9fc; }
     .vis-content { position: relative; width: 100%; margin-bottom: 20px; padding-top: 35px; padding-right: 45px; padding-bottom: 10px; box-sizing: border-box; }
-    
-    .grid { 
-        position: relative; width: 100%; border: 3px dashed #B0BEC5; min-height: 100px; overflow: hidden; 
-        /* Animation and Active State */
-        background: linear-gradient(135deg, #e3f2fd, #bbdefb); 
-        animation: subtleGlow 4s infinite ease-in-out; /* Subtle pulsing effect */
-        box-shadow: 0 0 10px rgba(27, 94, 32, 0.3); /* Soft green glow */
-    }
-
-    #cabinetOverlay { 
-        position: absolute; top: 0; left: 0; width: 100%; height: 100%; box-sizing: border-box; pointer-events: none; z-index: 5; 
-        /* Subtle Cabinet Lines */
-        border: 1px dashed rgba(176, 190, 197, 0.6);
-    }
-    .dimension-label { 
-        position: absolute; color: #424242; /* Darker text for readability on light background */
-        background: rgba(255, 255, 255, 0.95); padding: 3px 6px; font-size: 0.9em; border-radius: 3px; font-weight: 700; box-shadow: 0 1px 3px rgba(0,0,0,0.1); 
-    }
+    .grid { position: relative; width: 100%; border: 3px solid #1B5E20; min-height: 100px; overflow: hidden; background: linear-gradient(135deg, #e3f2fd, #bbdefb); }
+    #cabinetOverlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; box-sizing: border-box; pointer-events: none; z-index: 5; }
+    .dimension-label { position: absolute; color: #880000; background: rgba(255, 255, 255, 0.95); padding: 3px 6px; font-size: 0.9em; border-radius: 3px; font-weight: 700; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
     .dim-top { top: 5px; left: 50%; transform: translateX(-50%); }
     .dim-right { top: 50%; right: 10px; transform: translateY(-50%) rotate(90deg); transform-origin: center center; }
 
-    /* Details Section - DARK GREEN HEADERS */
+    /* Details Section */
     .details-box { border: 1px solid #e0e0e0; padding: 20px; border-radius: 8px; background: #f7f9fc; }
-    .details-box h4 { margin-top: 0; color: #1B5E20; /* Dark Green */ border-bottom: 2px solid #e0e0e0; padding-bottom: 8px; margin-bottom: 15px; font-size: 1.1em; }
+    .details-box h4 { margin-top: 0; color: #1B5E20; border-bottom: 2px solid #e0e0e0; padding-bottom: 8px; margin-bottom: 15px; font-size: 1.1em; }
     
     /* Custom style for the table layout (Remarks/Labels on left, Actual Figures on right) */
     .vis-details { display: grid; grid-template-columns: 1fr; gap: 10px; font-size: 0.95em; color: #333; }
@@ -112,16 +90,16 @@
         margin-right: 15px; /* Spacing between value and remark */
     }
     .vis-details small { 
-        /* This is now the ACTUAL FIGURE (right side, subtle color) */
+        /* This is now the ACTUAL FIGURE (right side, red) */
         font-size: 1.0em; 
-        color: #607D8B; /* Subtle Blue-Grey */
+        color: #880000; 
         font-weight: 700; 
     } 
 
-    .edit-btn { background: none; border: none; color: #1B5E20; /* Dark Green */ font-size: 0.9em; cursor: pointer; text-decoration: underline; padding: 0; margin-left: 10px; }
+    .edit-btn { background: none; border: none; color: #1B5E20; font-size: 0.9em; cursor: pointer; text-decoration: underline; padding: 0; margin-left: 10px; }
 
-    #downloadPdfLink { grid-column: 1 / -1; margin-top: 15px; text-align: center; cursor: pointer; color: #1B5E20; /* Dark Green */ text-decoration: underline; padding: 8px 0; font-weight: 600; }
-    #downloadPdfLink:hover { color: #000; }
+    #downloadPdfLink { grid-column: 1 / -1; margin-top: 15px; text-align: center; cursor: pointer; color: #1B5E20; text-decoration: underline; padding: 8px 0; font-weight: 600; }
+    #downloadPdfLink:hover { color: #2E7D32; }
 
     /* Modal/Popup Styles */
     .modal { position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4); display: none; }
@@ -130,9 +108,9 @@
     .close-btn { color: #aaa; font-size: 28px; font-weight: bold; }
     .close-btn:hover, .close-btn:focus { color: #000; text-decoration: none; cursor: pointer; }
     .modal-input-group { margin-bottom: 15px; }
-    .modal-input-group label { font-weight: 600; color: #424242; margin-bottom: 5px; }
-    .modal-submit { background-color: #4CAF50; margin-top: 15px; }
-    .modal-submit:hover { background-color: #66BB6A; }
+    .modal-input-group label { font-weight: 600; color: #1B5E20; margin-bottom: 5px; }
+    .modal-submit { background-color: #1B5E20; margin-top: 15px; }
+    .modal-submit:hover { background-color: #2E7D32; }
     .modal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
     .modal-grid-span-2 { grid-column: 1 / -1; }
     .modal-disclaimer { margin-top: 15px; padding: 10px; background: #fffde7; border: 1px solid #ffeb3b; border-radius: 5px; font-size: 0.85em; color: #616161; }
@@ -386,7 +364,7 @@
     function formatLargeNumber(n){if(n>=1e6)return(n/1e6).toFixed(2)+"M";if(n>=1e3)return(n/1e3).toFixed(1)+"K";return n.toLocaleString();}
     function gcd(a,b){return b===0?a:gcd(b,a%b);}
     
-    // --- UI/Modal Functions ---
+    // --- UI/Modal Functions (Unchanged from previous version, kept for brevity) ---
 
     function toggleMeasurementFields(){
         const unit = document.getElementById('unit').value;
@@ -531,7 +509,7 @@
         showVisualization(); 
     }
     
-    // --- Core Calculation Logic ---
+    // --- Core Calculation Logic (Updated H-Series selection) ---
 
     function getSuggestedControllerModel(totalPixels, finalResW, finalResH, productKey) {
         
@@ -798,7 +776,7 @@
         const { finalW_M, finalH_M, finalW_FT, finalH_FT } = calculateDimensions(data);
 
         // 1. Update Input Summary Display
-        document.getElementById('enteredSummaryText').textContent = `Cabinet Matrix: ${data.numCabW}x${data.numCabH} (${data.totalCabinets} Cabinets)`;
+        document.getElementById('enteredSummaryText').textContent = `Cabinet Array: ${data.numCabW}x${data.numCabH} (${data.totalCabinets} Cabinets)`;
         document.getElementById('aspectRatioValue').textContent = data.aspectRatioText; 
 
         // 2. Animate and switch containers
@@ -826,7 +804,7 @@
         
         // --- 1. Primary Controller ---
         let htmlContent = `
-            <span style="grid-column: 1 / -1; font-weight: 700; color: #1B5E20; /* Dark Green */ border-bottom: 1px solid #1B5E20; padding-bottom: 5px; margin-bottom: 5px; margin-top: 10px;">Control System Summary</span>
+            <span style="grid-column: 1 / -1; font-weight: 700; color: #1B5E20; border-bottom: 1px solid #1B5E20; padding-bottom: 5px; margin-bottom: 5px; margin-top: 10px;">Control System Summary</span>
             <span id="suggestedControllerModel"><strong>Controller/Processor Model (${data.controllerType}) :</strong><small>${data.controllerName}</small></span>
         `;
 
@@ -834,7 +812,7 @@
         if (isHSeries) {
             htmlContent += `
                 <div id="modularDetails" class="vis-details" style="grid-column: 1 / -1; gap: 5px; border-top: 1px solid #e0e0e0; padding-top: 10px; margin-top: 5px;">
-                    <span style="grid-column: 1 / -1; font-weight: 700; color: #1B5E20; /* Dark Green */ margin-bottom: 5px;">Modular Components (H-Series)</span>
+                    <span style="grid-column: 1 / -1; font-weight: 700; color: #880000; margin-bottom: 5px;">Modular Components (H-Series)</span>
                     <span id="splicerSolution"><strong>Splicer Frame/Solution :</strong><small>${data.splicerSolution || 'N/A'}</small></span>
                     <span id="sendingCardModel"><strong>Output Card (${data.outputCardPorts} ports/card) :</strong><small>${data.requiredSendCards} x ${data.outputCardModel}</small></span>
                     <span id="inputCardModel"><strong>Input Card (User Specified) :</strong><small>${data.inputCardQty} x ${data.inputCardModel}</small></span>
@@ -844,16 +822,16 @@
 
         // --- 3. Wall Connection Summary ---
         htmlContent += `
-            <span style="grid-column: 1 / -1; font-weight: 700; color: #1B5E20; /* Dark Green */ border-bottom: 1px solid #1B5E20; padding-bottom: 5px; margin-bottom: 5px; margin-top: 10px;">Connection Summary</span>
+            <span style="grid-column: 1 / -1; font-weight: 700; color: #1B5E20; border-bottom: 1px solid #1B5E20; padding-bottom: 5px; margin-bottom: 5px; margin-top: 10px;">Connection Summary</span>
             <span id="requiredRecCards"><strong>Total Receiving Cards Required :</strong><small>${data.totalRecCards}</small></span>
             
-            <span id="controllerLongPorts"><strong>Long Ethernet Ports/Runs :</strong><small> ${data.requiredPorts}</small></span> (Controller to Wall)
-            <span id="controllerShortPorts"><strong>Short Ethernet Cables :</strong><small> ${data.requiredShortEthernet}</small></span> (Between Cabinets)
+            <span id="controllerLongPorts"><strong>Long Ethernet Ports/Runs : (Controller to Wall) -</strong><small>** ${data.requiredPorts}</small></span>
+            <span id="controllerShortPorts"><strong>Short Ethernet Cables : (Between Cabinets) -</strong><small>** ${data.requiredShortEthernet}</small></span>
         `;
         
         // --- 4. Power and Weight Section ---
         htmlContent += `
-            <span style="grid-column: 1 / -1; font-weight: 700; color: #1B5E20; /* Dark Green */ border-bottom: 1px solid #1B5E20; padding-bottom: 5px; margin-bottom: 5px; margin-top: 10px;">Power and Weight (Actual Figures Only)</span>
+            <span style="grid-column: 1 / -1; font-weight: 700; color: #1B5E20; border-bottom: 1px solid #1B5E20; padding-bottom: 5px; margin-bottom: 5px; margin-top: 10px;">Power and Weight (Actual Figures Only)</span>
             <span id="wallPowerActual"><strong>Max Power Consumption (Actual) :</strong><small>${formatNumber(data.actualPower_W_unbuffered, 0)} W</small></span>
             <span id="wallCurrent"><strong>Max Current Draw (Actual @220V) :</strong><small>${data.actualCurrent_A.toFixed(2)} A</small></span>
             <span id="cabinetWeightActual"><strong>Total Wall Weight (Actual Cabinets) :</strong><small>${formatNumber(data.actualWallWeight_unbuffered, 1)} kg</small></span>
@@ -890,7 +868,7 @@
         for (let r = 0; r < data.numCabH; r++) {
             for (let c = 0; c < data.numCabW; c++) {
                 const cabDiv = document.createElement('div');
-                cabDiv.style.border = '1px dashed rgba(176, 190, 197, 0.6)'; /* Updated to subtle color */
+                cabDiv.style.border = '1px dashed rgba(13, 71, 161, 0.4)';
                 cabDiv.style.boxSizing = 'border-box';
                 cabinetOverlay.appendChild(cabDiv);
             }
@@ -907,7 +885,7 @@
         document.getElementById('downloadPdfLink').classList.add('hidden');
     }
 
-    // --- PDF Generation (Redesigned with Subtle Colors and Updated Footer) ---
+    // --- PDF Generation (Redesigned with Smaller Font & BOQ) ---
     function downloadPdf() {
         if (!finalCalculationData || finalCalculationData.totalPixels === 0) {
             alert("Please calculate the LED wall configuration first.");
@@ -924,15 +902,12 @@
         const margin = 15;
         const lineHeight = 7; 
         const pageW = doc.internal.pageSize.getWidth();
-        
-        // Subtle Colors for PDF
-        const primaryColor = [176, 190, 197]; // Very Light Blue-Gray for table headers
-        const secondaryColor = [27, 94, 32]; // Dark Green (#1B5E20) for section titles/headers
-        const footerColor = [220, 220, 220]; // Very light gray for footer text
+        const primaryColor = [27, 94, 32]; /* Dark Green #1B5E20 */
+        const secondaryColor = [136, 0, 0]; /* Maroon #880000 */
 
         // 1. Header (Title) - Reduced to 18pt
         doc.setFontSize(18);
-        doc.setTextColor(...secondaryColor);
+        doc.setTextColor(...primaryColor);
         doc.text('PeopleLink LED Video Wall Technical Summary', pageW / 2, y, { align: 'center' });
         y += lineHeight;
         doc.setFontSize(8);
@@ -976,7 +951,7 @@
             ['Pixel Pitch :', `${data.pixelPitch_mm} mm`],
             ['Cabinet Dimensions (W x H) :', `${data.cabinetW_mm}mm x ${data.cabinetH_mm}mm`],
             ['Cabinet Pixels (W x H) :', `${data.cabPixW} x ${data.cabPixH}`],
-            ['Cabinet Matrix (W x H) :', `${data.numCabW} x ${data.numCabH}`],
+            ['Cabinet Array (W x H) :', `${data.numCabW} x ${data.numCabH}`],
             ['Total Cabinets Required :', `${data.totalCabinets}`],
             ['Total Modules Required :', `${data.totalModules}`],
             ['Brightness Range :', data.nits_range ? `${data.nits_range} cd/m²` : 'N/A'], 
@@ -1126,12 +1101,6 @@
         doc.setTextColor(100, 100, 100);
         doc.text(`Note on Design Figures: Design Power and Weight include a ${MARGIN_PERCENT_TEXT} safety margin over actual maximum consumption/cabinet weight for structural and electrical planning.`, margin, y, { maxWidth: pageW - 2 * margin });
         y += lineHeight;
-        
-        // Add the new copyright and design line in a light color (as previously requested for watermarks)
-        doc.setFontSize(7);
-        doc.setTextColor(...footerColor);
-        doc.text('© 2025 PeopleLink Unified Communications Pvt. Ltd. | Designed by Pramodh Kathala', pageW / 2, doc.internal.pageSize.getHeight() - 10, { align: 'center' });
-
 
         doc.save(`PeopleLink_LED_Config_${data.finalResW}x${data.finalResH}_BOQ.pdf`);
     }
@@ -1151,5 +1120,8 @@
         }
     });
   </script>
+<footer class="text-center text-gray-500 text-sm mt-10">
+    © PeopleLink
+</footer>
 </body>
 </html>
