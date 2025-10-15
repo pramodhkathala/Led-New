@@ -12,7 +12,7 @@
     .main-wrapper { max-width: 1200px; margin: auto; }
     
     /* Header & Titles */
-    h2 { text-align: center; color: #1B5E20; margin-top: 0; margin-bottom: 30px; font-weight: 700; font-size: 1.8em; }
+    h2 { text-align: center; color: #0D47A1; margin-top: 0; margin-bottom: 30px; font-weight: 700; font-size: 1.8em; }
 
     /* Input/Form Container */
     .input-panel { background: #ffffff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: all 0.6s ease-out; }
@@ -27,10 +27,10 @@
     select, input[type="number"], input[type="text"] { 
         width: 100%; padding: 10px 12px; font-size: 15px; border: 1px solid #dcdcdc; border-radius: 6px; box-sizing: border-box; transition: border-color 0.3s, box-shadow 0.3s; 
     }
-    select:focus, input[type="number"]:focus, input[type="text"]:focus { border-color: #1B5E20; box-shadow: 0 0 0 2px rgba(27, 94, 32, 0.2); outline: none; }
+    select:focus, input[type="number"]:focus, input[type="text"]:focus { border-color: #0D47A1; box-shadow: 0 0 0 2px rgba(27, 94, 32, 0.2); outline: none; }
     
     /* Buttons */
-    .submit-btn { margin-top: 25px; grid-column: 1 / -1; background-color: #1B5E20; color: white; padding: 14px; border: none; border-radius: 8px; font-size: 16px; width: 100%; cursor: pointer; transition: background-color 0.3s, transform 0.2s; font-weight: 600; }
+    .submit-btn { margin-top: 25px; grid-column: 1 / -1; background-color: #0D47A1; color: white; padding: 14px; border: none; border-radius: 8px; font-size: 16px; width: 100%; cursor: pointer; transition: background-color 0.3s, transform 0.2s; font-weight: 600; }
     .submit-btn:hover { background-color: #2E7D32; transform: translateY(-1px); }
     .back-btn { background-color: #6c757d; margin-top: 30px; }
     .back-btn:hover { background-color: #5a6268; }
@@ -61,7 +61,7 @@
     /* Visualization Area */
     .vis-box { border: 1px solid #e0e0e0; padding: 20px; border-radius: 8px; background: #f7f9fc; }
     .vis-content { position: relative; width: 100%; margin-bottom: 20px; padding-top: 35px; padding-right: 45px; padding-bottom: 10px; box-sizing: border-box; }
-    .grid { position: relative; width: 100%; border: 3px solid #1B5E20; min-height: 100px; overflow: hidden; background: linear-gradient(135deg, #e3f2fd, #bbdefb); }
+    .grid { position: relative; width: 100%; border: 3px solid #0D47A1; min-height: 100px; overflow: hidden; background: linear-gradient(135deg, #e3f2fd, #bbdefb); }
     #cabinetOverlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; box-sizing: border-box; pointer-events: none; z-index: 5; }
     .dimension-label { position: absolute; color: #880000; background: rgba(255, 255, 255, 0.95); padding: 3px 6px; font-size: 0.9em; border-radius: 3px; font-weight: 700; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
     .dim-top { top: 5px; left: 50%; transform: translateX(-50%); }
@@ -69,7 +69,7 @@
 
     /* Details Section */
     .details-box { border: 1px solid #e0e0e0; padding: 20px; border-radius: 8px; background: #f7f9fc; }
-    .details-box h4 { margin-top: 0; color: #1B5E20; border-bottom: 2px solid #e0e0e0; padding-bottom: 8px; margin-bottom: 15px; font-size: 1.1em; }
+    .details-box h4 { margin-top: 0; color: #0D47A1; border-bottom: 2px solid #e0e0e0; padding-bottom: 8px; margin-bottom: 15px; font-size: 1.1em; }
     
     /* Custom style for the table layout (Remarks/Labels on left, Actual Figures on right) */
     .vis-details { display: grid; grid-template-columns: 1fr; gap: 10px; font-size: 0.95em; color: #333; }
@@ -96,9 +96,9 @@
         font-weight: 700; 
     } 
 
-    .edit-btn { background: none; border: none; color: #1B5E20; font-size: 0.9em; cursor: pointer; text-decoration: underline; padding: 0; margin-left: 10px; }
+    .edit-btn { background: none; border: none; color: #0D47A1; font-size: 0.9em; cursor: pointer; text-decoration: underline; padding: 0; margin-left: 10px; }
 
-    #downloadPdfLink { grid-column: 1 / -1; margin-top: 15px; text-align: center; cursor: pointer; color: #1B5E20; text-decoration: underline; padding: 8px 0; font-weight: 600; }
+    #downloadPdfLink { grid-column: 1 / -1; margin-top: 15px; text-align: center; cursor: pointer; color: #0D47A1; text-decoration: underline; padding: 8px 0; font-weight: 600; }
     #downloadPdfLink:hover { color: #2E7D32; }
 
     /* Modal/Popup Styles */
@@ -108,8 +108,8 @@
     .close-btn { color: #aaa; font-size: 28px; font-weight: bold; }
     .close-btn:hover, .close-btn:focus { color: #000; text-decoration: none; cursor: pointer; }
     .modal-input-group { margin-bottom: 15px; }
-    .modal-input-group label { font-weight: 600; color: #1B5E20; margin-bottom: 5px; }
-    .modal-submit { background-color: #1B5E20; margin-top: 15px; }
+    .modal-input-group label { font-weight: 600; color: #0D47A1; margin-bottom: 5px; }
+    .modal-submit { background-color: #0D47A1; margin-top: 15px; }
     .modal-submit:hover { background-color: #2E7D32; }
     .modal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
     .modal-grid-span-2 { grid-column: 1 / -1; }
@@ -238,7 +238,7 @@
     <div id="controllerModal" class="modal">
       <div class="modal-content">
         <div class="modal-header">
-          <h3 style="margin:0; color:#1B5E20;">Edit Control System Components</h3>
+          <h3 style="margin:0; color:#0D47A1;">Edit Control System Components</h3>
           <span class="close-btn" onclick="closeControllerModal()">&times;</span>
         </div>
         
@@ -804,7 +804,7 @@
         
         // --- 1. Primary Controller ---
         let htmlContent = `
-            <span style="grid-column: 1 / -1; font-weight: 700; color: #1B5E20; border-bottom: 1px solid #1B5E20; padding-bottom: 5px; margin-bottom: 5px; margin-top: 10px;">Control System Summary</span>
+            <span style="grid-column: 1 / -1; font-weight: 700; color: #0D47A1; border-bottom: 1px solid #0D47A1; padding-bottom: 5px; margin-bottom: 5px; margin-top: 10px;">Control System Summary</span>
             <span id="suggestedControllerModel"><strong>Controller/Processor Model (${data.controllerType}) :</strong><small>${data.controllerName}</small></span>
         `;
 
@@ -822,16 +822,16 @@
 
         // --- 3. Wall Connection Summary ---
         htmlContent += `
-            <span style="grid-column: 1 / -1; font-weight: 700; color: #1B5E20; border-bottom: 1px solid #1B5E20; padding-bottom: 5px; margin-bottom: 5px; margin-top: 10px;">Connection Summary</span>
+            <span style="grid-column: 1 / -1; font-weight: 700; color: #0D47A1; border-bottom: 1px solid #0D47A1; padding-bottom: 5px; margin-bottom: 5px; margin-top: 10px;">Connection Summary</span>
             <span id="requiredRecCards"><strong>Total Receiving Cards Required :</strong><small>${data.totalRecCards}</small></span>
             
-            <span id="controllerLongPorts"><strong>Long Ethernet Ports/Runs :</strong><small>${data.requiredPorts}(Controller to Wall)</small></span>
-            <span id="controllerShortPorts"><strong>Short Ethernet Cables :</strong><small>${data.requiredShortEthernet}(Between Cabinets)</small></span>
+            <span id="controllerLongPorts"><strong>Long Ethernet Ports/Runs :</strong><small>${data.requiredPorts} (Controller to Wall)</small></span>
+            <span id="controllerShortPorts"><strong>Short Ethernet Cables :</strong><small>${data.requiredShortEthernet} (Between Cabinets)</small></span>
         `;
         
         // --- 4. Power and Weight Section ---
         htmlContent += `
-            <span style="grid-column: 1 / -1; font-weight: 700; color: #1B5E20; border-bottom: 1px solid #1B5E20; padding-bottom: 5px; margin-bottom: 5px; margin-top: 10px;">Power and Weight (Actual Figures Only)</span>
+            <span style="grid-column: 1 / -1; font-weight: 700; color: #0D47A1; border-bottom: 1px solid #0D47A1; padding-bottom: 5px; margin-bottom: 5px; margin-top: 10px;">Power and Weight (Actual Figures Only)</span>
             <span id="wallPowerActual"><strong>Max Power Consumption (Actual) :</strong><small>${formatNumber(data.actualPower_W_unbuffered, 0)} W</small></span>
             <span id="wallCurrent"><strong>Max Current Draw (Actual @220V) :</strong><small>${data.actualCurrent_A.toFixed(2)} A</small></span>
             <span id="cabinetWeightActual"><strong>Total Wall Weight (Actual Cabinets) :</strong><small>${formatNumber(data.actualWallWeight_unbuffered, 1)} kg</small></span>
@@ -902,7 +902,7 @@
         const margin = 15;
         const lineHeight = 7; 
         const pageW = doc.internal.pageSize.getWidth();
-        const primaryColor = [27, 94, 32]; /* Dark Green #1B5E20 */
+        const primaryColor = [27, 94, 32]; /* dark blue #0D47A1 */
         const secondaryColor = [136, 0, 0]; /* Maroon #880000 */
 
         // 1. Header (Title) - Reduced to 18pt
@@ -1125,4 +1125,5 @@
 </footer>
 </body>
 </html>
+
 
